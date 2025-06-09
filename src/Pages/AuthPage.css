@@ -1,0 +1,117 @@
+/* Auth Container */
+.auth-container {
+    max-width: 400px;
+    margin: 80px auto;
+    padding: 30px;
+    background: #121212; /* Dark background */
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(255, 204, 0, 0.3); /* Dark yellow glow */
+    text-align: center;
+    color: white;
+}
+
+/* Title Styling */
+.auth-title {
+    font-size: 28px;
+    font-weight: 600;
+    color: #ffcc00; /* Dark yellow accent */
+    margin-bottom: 20px;
+}
+
+/* Form Styling */
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Input Fields */
+.auth-form input {
+    width: 100%;
+    padding: 12px;
+    background: #333333; /* Darker background for input */
+    border: 1px solid #ffcc00; /* Dark yellow border */
+    border-radius: 8px;
+    font-size: 16px;
+    color: white;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+/* Input Focus Effect */
+.auth-form input:focus {
+    border-color: #ffcc33;
+    box-shadow: 0 0 10px rgba(255, 204, 0, 0.5);
+}
+
+/* Auth Buttons */
+.auth-button {
+    width: 100%;
+    padding: 12px;
+    background: #ffcc00; /* Dark yellow background */
+    color: black;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.auth-button:hover {
+    background: #e6b800; /* Darker yellow on hover */
+}
+
+/* Google Login Button */
+.google-button {
+    width: 100%;
+    padding: 12px;
+    background: #2a2a2a; /* Dark background for the Google button */
+    color: #ffcc00; /* Dark yellow text */
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: background 0.3s ease;
+    border: 1px solid #ffcc00;
+}
+
+.google-button:hover {
+    background: #333333;
+}
+
+/* Google Icon */
+.google-icon {
+    width: 20px;
+    height: 20px;
+}
+
+/* Error Message */
+.auth-error {
+    color: #ff4d4d; /* Red color for errors */
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+/* Toggle Between Login & Signup */
+.auth-toggle {
+    margin-top: 15px;
+    font-size: 14px;
+    color: #ffcc00; /* Dark yellow text */
+}
+
+.auth-toggle button {
+    border: none;
+    background: none;
+    color: #ffcc00;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.auth-toggle button:hover {
+    text-decoration: underline;
+}

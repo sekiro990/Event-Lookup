@@ -1,0 +1,61 @@
+/* Event Card Styles */
+.event-card {
+    background-color: #2a2a2a;
+    color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 300px; /* Fixed width */
+    margin: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.event-card:hover {
+    transform: translateY(-5px); /* Lift effect on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.event-card-image {
+        width: 100%;
+        height: auto; /* Maintain aspect ratio */
+        max-width: 400px; /* Set a maximum width for the image */
+        object-fit: cover; /* Ensures that the image covers the area properly */
+    
+}
+
+.event-card-content {
+    padding: 20px;
+}
+
+.event-card-title {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #ff9900; /* Accent color for title */
+}
+
+.event-card-description {
+    font-size: 1rem;
+    color: #ccc;
+    margin-bottom: 15px;
+}
+
+.event-card-btn {
+    background-color: #ff9900;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.event-card-btn:hover {
+    background-color: #e68a00;
+}
+
+@media (max-width: 768px) {
+    .event-card {
+      width: 90%; /* Make the cards take up more space on smaller screens */
+    }
+}

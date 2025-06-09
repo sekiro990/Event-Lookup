@@ -1,0 +1,132 @@
+/* Login Page Styling */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #121212; /* Dark theme */
+}
+
+/* Card-like container */
+.login-card {
+    background: #1a1a1a;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0px 10px 30px rgba(255, 153, 0, 0.3);
+    text-align: center;
+    width: 350px;
+    color: white;
+}
+
+/* Title */
+.login-title {
+    font-size: 26px;
+    font-weight: bold;
+    color: #ff9900;
+}
+
+/* Subtitle */
+.login-subtitle {
+    font-size: 14px;
+    color: #bbbbbb;
+    margin-bottom: 20px;
+}
+
+/* Input Fields */
+.input-group {
+    margin-bottom: 15px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ff9900;
+    background: #252525;
+    color: white;
+    font-size: 16px;
+    border-radius: 8px;
+    outline: none;
+    transition: 0.3s;
+}
+
+.input-group input:focus {
+    border-color: #ffcc66;
+    box-shadow: 0 0 10px rgba(255, 153, 0, 0.5);
+}
+
+/* Login Button */
+.login-button {
+    width: 100%;
+    padding: 12px;
+    background: #ff9900;
+    border: none;
+    border-radius: 8px;
+    color: black;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.login-button:hover {
+    background: #cc7a00;
+}
+
+/* Google Button */
+.google-button {
+    width: 100%;
+    padding: 12px;
+    background: white;
+    color: black;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: background 0.3s ease;
+    border: 1px solid #ccc;
+}
+
+.google-button:hover {
+    background: #e0e0e0;
+}
+
+/* Google Icon */
+.google-icon {
+    width: 20px;
+    height: 20px;
+}
+
+/* Error Message */
+.login-error {
+    color: red;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+/* Divider */
+.divider {
+    margin: 15px 0;
+    border: none;
+    height: 1px;
+    background: #333;
+}
+
+/* Toggle Between Login & Signup */
+.login-toggle {
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.login-toggle a {
+    color: #ff9900;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.login-toggle a:hover {
+    text-decoration: underline;
+}

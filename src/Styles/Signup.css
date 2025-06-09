@@ -1,0 +1,96 @@
+/* Signup Page Styling */
+.signup-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #121212; /* Dark background */
+}
+
+/* Card-like container */
+.signup-card {
+    background: #1a1a1a;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0px 10px 30px rgba(255, 153, 0, 0.3);
+    text-align: center;
+    width: 350px;
+    color: white;
+}
+
+/* Title */
+.signup-title {
+    font-size: 26px;
+    font-weight: bold;
+    color: #ff9900;
+}
+
+/* Subtitle */
+.signup-subtitle {
+    font-size: 14px;
+    color: #bbbbbb;
+    margin-bottom: 20px;
+}
+
+/* Input Fields */
+.input-group {
+    margin-bottom: 15px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ff9900;
+    background: #252525;
+    color: white;
+    font-size: 16px;
+    border-radius: 8px;
+    outline: none;
+    transition: 0.3s;
+}
+
+.input-group input:focus {
+    border-color: #ffcc66;
+    box-shadow: 0 0 10px rgba(255, 153, 0, 0.5);
+}
+
+/* Signup Button */
+.signup-button {
+    width: 100%;
+    padding: 12px;
+    background: #ff9900;
+    border: none;
+    border-radius: 8px;
+    color: black;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.signup-button:hover {
+    background: #cc7a00;
+}
+
+/* Error Message */
+.signup-error {
+    color: red;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+/* Toggle Between Signup & Login */
+.signup-toggle {
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.signup-toggle a {
+    color: #ff9900;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.signup-toggle a:hover {
+    text-decoration: underline;
+}
