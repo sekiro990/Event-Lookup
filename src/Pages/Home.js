@@ -1,4 +1,4 @@
-import React from 'react';
+
 import EventCard from '../Components/Cards';
 import './Home.css'; // Styling for the home page
 import sport from "../Assets/sports.webp";

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { BrowserRouter as Router, Routes, Route, Navigate, Link } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import Navbar from "./Components/Navbar";
 import Home from "./Pages/Home";
 import AuthPage from "./Pages/AuthPage";
@@ -26,9 +26,23 @@ const App = () => {
     <Router>
       <Navbar user={user} />
       <Routes>
-        <Route path="*" element={<Home />} />
-        <Route path="/auth" element={user ? <Navigate to="/home" /> : <AuthPage />} />
-        <Route path="/events" element= {<Events />}/>
+        {/* Set proper route path for Home */}
+        <Route path="/" element={<Home />} />
+
+        {/* Protect Events Route - Only logged-in users can access */}
+        <Route
+          path="/events"
+          element={user ? <Events /> : <Navigate to="/auth" />}
+        />
+
+        {/* Auth route, redirect if already logged in */}
+        <Route
+          path="/auth"
+          element={user ? <Navigate to="/" /> : <AuthPage />}
+        />
+
+        {/* Catch-all for unknown paths */}
+        <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </Router>
   );
