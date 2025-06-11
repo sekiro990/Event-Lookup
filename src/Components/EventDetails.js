@@ -24,22 +24,40 @@ const EventDetailPage = () => {
   const user = auth.currentUser;
 
   useEffect(() => {
+    if (!id) return;
+
     const loadEvent = async () => {
       const data = await fetchEventById(id);
       setEvent(data);
     };
+
     loadEvent();
   }, [id]);
 
   useEffect(() => {
+    if (!id) return;
+
     const q = query(
       collection(db, "comments"),
       where("eventId", "==", id),
       orderBy("timestamp", "desc")
     );
-    const unsubscribe = onSnapshot(q, (snapshot) => {
-      setComments(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
-    });
+
+    const unsubscribe = onSnapshot(
+      q,
+      (snapshot) => {
+        const data = snapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        console.log("Realtime snapshot received:", data);
+        setComments(data);
+      },
+      (error) => {
+        console.error("Error fetching comments:", error);
+      }
+    );
+
     return () => unsubscribe();
   }, [id]);
 
@@ -47,15 +65,18 @@ const EventDetailPage = () => {
     if (!user) return alert("You must be logged in to comment.");
     if (!commentText.trim()) return;
 
-    await addDoc(collection(db, "comments"), {
-      eventId: id,
-      userId: user.uid,
-      userName: user.displayName,
-      text: commentText,
-      timestamp: serverTimestamp(),
-    });
-
-    setCommentText("");
+    try {
+      await addDoc(collection(db, "comments"), {
+        eventId: id,
+        userId: user.uid,
+        userName: user.displayName || "Anonymous",
+        text: commentText,
+        timestamp: serverTimestamp(),
+      });
+      setCommentText("");
+    } catch (err) {
+      console.error("Failed to submit comment:", err);
+    }
   };
 
   if (!event) return <p>Loading event details...</p>;
@@ -83,10 +104,10 @@ const EventDetailPage = () => {
         Buy Tickets / More Info
       </a>
 
-      <hr style={{ margin: "40px 0", borderColor: "#444" }} />
+      <hr />
 
       <div className="comments-section">
-        <h3 style={{ color: "#ff9800" }}>Comments</h3>
+        <h3>💬 Comments</h3>
 
         {user ? (
           <div className="comment-form">
@@ -94,24 +115,29 @@ const EventDetailPage = () => {
               value={commentText}
               onChange={(e) => setCommentText(e.target.value)}
               placeholder="Write your comment..."
-              className="comment-textarea"
+              rows={4}
             />
-            <button onClick={handleCommentSubmit} className="event-link-button">
-              Post
-            </button>
+            <button onClick={handleCommentSubmit}>Post Comment</button>
           </div>
         ) : (
-          <p>Please log in to comment.</p>
+          <p className="login-message">Please log in to comment.</p>
         )}
 
         <div className="comments-list">
           {comments.length === 0 ? (
-            <p style={{ color: "#aaa" }}>No comments yet.</p>
+            <p className="no-comments">No comments yet. Be the first to share your thoughts!</p>
           ) : (
             comments.map((c) => (
               <div key={c.id} className="comment">
-                <strong>{c.userName}</strong>
-                <p>{c.text}</p>
+                <div className="comment-header">
+                  <strong>{c.userName}</strong>
+                  <span className="comment-date">
+                    {c.timestamp?.toDate
+                      ? new Date(c.timestamp.toDate()).toLocaleString()
+                      : "Just now"}
+                  </span>
+                </div>
+                <p className="comment-text">{c.text}</p>
               </div>
             ))
           )}
