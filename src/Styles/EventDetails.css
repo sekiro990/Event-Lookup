@@ -1,0 +1,135 @@
+/* Event Details Container */
+.event-detail-page {
+  background-color: #121212;
+  color: #ffffff;
+  min-height: 100vh;
+  padding: 60px 20px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+/* Event Title */
+.event-detail-page h1 {
+  font-size: 2.2rem;
+  color: #ffcc00;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Event Image */
+.event-detail-page img {
+  width: 100%;
+  max-width: 700px;
+  height: auto;
+  border-radius: 14px;
+  display: block;
+  margin: 0 auto 30px auto;
+  box-shadow: 0 6px 18px rgba(255, 153, 0, 0.25);
+}
+
+/* Description & Meta */
+.event-detail-page p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #dddddd;
+  margin-bottom: 12px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+/* External Link Button */
+.event-detail-page a {
+  display: inline-block;
+  background-color: #ff9900;
+  color: black;
+  font-weight: bold;
+  padding: 12px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.event-detail-page a:hover {
+  background-color: #ffa733;
+}
+
+/* Divider */
+.event-detail-page hr {
+  margin: 40px auto;
+  border: none;
+  height: 2px;
+  background: linear-gradient(to right, transparent, #ff9900, transparent);
+  width: 80%;
+}
+
+/* Comments Section */
+.comments-section {
+  max-width: 700px;
+  margin: 0 auto;
+  padding-top: 30px;
+}
+
+/* Textarea */
+.comments-section textarea {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #333;
+  background-color: #1e1e1e;
+  color: white;
+  font-size: 1rem;
+  margin-bottom: 10px;
+  resize: vertical;
+}
+
+/* Submit Button */
+.comments-section button {
+  background-color: #ff9900;
+  color: black;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.comments-section button:hover {
+  background-color: #ffa733;
+}
+
+/* Comment Display */
+.comment {
+  background-color: #1e1e1e;
+  border: 1px solid #2c2c2c;
+  border-radius: 10px;
+  padding: 14px;
+  margin-top: 12px;
+}
+
+.comment strong {
+  color: #ffcc00;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.comment p {
+  color: #cccccc;
+  margin: 0;
+}
+
+/* Fade animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

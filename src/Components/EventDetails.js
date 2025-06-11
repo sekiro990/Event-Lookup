@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { fetchEventById } from "../Utils/eventfindApi";
 import { getAuth } from "firebase/auth";
-import { db } from "../firebase"; // Your Firestore config
+import { db } from "../firebase";
 import {
   collection,
   addDoc,
@@ -10,7 +10,9 @@ import {
   where,
   onSnapshot,
   orderBy,
+  serverTimestamp,
 } from "firebase/firestore";
+import "../Styles/EventDetails.css";
 
 const EventDetailPage = () => {
   const { id } = useParams();
@@ -50,49 +52,69 @@ const EventDetailPage = () => {
       userId: user.uid,
       userName: user.displayName,
       text: commentText,
-      timestamp: new Date(),
+      timestamp: serverTimestamp(),
     });
 
     setCommentText("");
   };
 
-  if (!event) return <p>Loading...</p>;
+  if (!event) return <p>Loading event details...</p>;
 
   return (
     <div className="event-detail-page">
-      <h1>{event.name}</h1>
-      {event.image && <img src={event.image} alt={event.name} />}
-      <p>{event.description}</p>
-      <p>📍 {event.venue}</p>
-      <p>🗓️ {event.date}</p>
-      <a href={event.url} target="_blank" rel="noopener noreferrer">
-        More Info / Buy Tickets
+      <h1 className="event-details-title">{event.name}</h1>
+
+      {event.image ? (
+        <img src={event.image} alt={event.name} className="event-details-image" />
+      ) : (
+        <div className="image-placeholder">No Image Available</div>
+      )}
+
+      <p className="event-description">{event.description || "No description provided."}</p>
+      <p className="event-meta"><strong>📍 Venue:</strong> {event.venue}</p>
+      <p className="event-meta"><strong>🗓️ Date:</strong> {new Date(event.date).toLocaleString()}</p>
+
+      <a
+        href={event.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="event-link-button"
+      >
+        Buy Tickets / More Info
       </a>
 
-      <hr />
+      <hr style={{ margin: "40px 0", borderColor: "#444" }} />
 
       <div className="comments-section">
-        <h3>Comments</h3>
+        <h3 style={{ color: "#ff9800" }}>Comments</h3>
+
         {user ? (
-          <>
+          <div className="comment-form">
             <textarea
               value={commentText}
               onChange={(e) => setCommentText(e.target.value)}
               placeholder="Write your comment..."
+              className="comment-textarea"
             />
-            <button onClick={handleCommentSubmit}>Post</button>
-          </>
+            <button onClick={handleCommentSubmit} className="event-link-button">
+              Post
+            </button>
+          </div>
         ) : (
           <p>Please log in to comment.</p>
         )}
 
         <div className="comments-list">
-          {comments.map((c) => (
-            <div key={c.id} className="comment">
-              <strong>{c.userName}</strong>
-              <p>{c.text}</p>
-            </div>
-          ))}
+          {comments.length === 0 ? (
+            <p style={{ color: "#aaa" }}>No comments yet.</p>
+          ) : (
+            comments.map((c) => (
+              <div key={c.id} className="comment">
+                <strong>{c.userName}</strong>
+                <p>{c.text}</p>
+              </div>
+            ))
+          )}
         </div>
       </div>
     </div>

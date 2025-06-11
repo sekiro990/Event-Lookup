@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { fetchEvents } from "../Utils/eventfindApi";
 import "../Styles/Events.css";
 
@@ -52,10 +53,7 @@ const Events = () => {
                 : "No description available."}
             </p>
 
-            <p className="event-location">
-              📍 {event.venue || "Venue TBA"}
-            </p>
-
+            <p className="event-location">📍 {event.venue || "Venue TBA"}</p>
             <p className="event-time">
               🗓️{" "}
               {event.date
@@ -63,14 +61,12 @@ const Events = () => {
                 : "Date TBA"}
             </p>
 
-            <a
-              href={event.url}
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              to={`/events/${event.id}`}
               className="event-link"
             >
               View Event
-            </a>
+            </Link>
           </div>
         ))}
       </div>

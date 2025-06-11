@@ -40,3 +40,32 @@ export const fetchEvents = async (rows = 100) => {
     return [];
   }
 };
+// 👇 Add this function at the bottom of your existing file
+export const fetchEventById = async (eventId) => {
+  try {
+    const response = await axios.get(
+      `https://app.ticketmaster.com/discovery/v2/events/${eventId}.json`,
+      {
+        params: {
+          apikey: TICKETMASTER_API_KEY,
+        },
+      }
+    );
+
+    const ev = response.data;
+
+    return {
+      id: ev.id,
+      name: ev.name || "Untitled Event",
+      image: ev.images?.[0]?.url || null,
+      description: ev.info || "",
+      venue: ev._embedded?.venues?.[0]?.name || "Venue TBA",
+      date: ev.dates?.start?.dateTime || "",
+      url: ev.url || "#",
+    };
+  } catch (error) {
+    console.error("❌ Error fetching event by ID:", error.message);
+    return null;
+  }
+};
+
